@@ -1,6 +1,7 @@
 'use client';
 
 import CertificateTemplate from '@/components/certificates/CertificateTemplate';
+import { PrintButton } from '@/components/ui/PrintButton';
 import { useAuth } from '@/contexts/AuthContext';
 import { Certificate, certificatesAPI } from '@/lib/api';
 import {
@@ -122,7 +123,7 @@ function CertificateGeneratorInner() {
             <p className="font-mono text-[10px] tracking-[0.3em] text-gray-500 uppercase">
               Live Preview
             </p>
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(220,38,38,0.08)]">
+            <div className="certificate-container overflow-hidden rounded-2xl border border-white/10 shadow-[0_0_60px_rgba(220,38,38,0.08)]">
               <CertificateTemplate data={formData} />
             </div>
             <p className="text-center font-mono text-[10px] text-gray-600">
@@ -240,11 +241,14 @@ function CertificateGeneratorInner() {
                 href={linkedInUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#0077B5] py-3.5 text-sm font-black tracking-widest text-white uppercase transition-colors hover:bg-[#006399]"
+                className="no-print flex w-full items-center justify-center gap-2 rounded-xl bg-[#0077B5] py-3.5 text-sm font-black tracking-widest text-white uppercase transition-colors hover:bg-[#006399]"
               >
                 <LinkedInIcon />
                 Add to LinkedIn
               </a>
+
+              {/* Print */}
+              <PrintButton label="Print Certificate" className="w-full rounded-xl border border-white/10 bg-zinc-900 py-3.5 text-sm font-black tracking-widest text-white uppercase transition-colors hover:border-red-600 hover:bg-zinc-800" />
             </div>
 
             {/* Hash info box */}

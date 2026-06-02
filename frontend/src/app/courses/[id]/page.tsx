@@ -4,6 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useWallet } from '@/contexts/WalletContext';
 import { certificatesAPI, Course, coursesAPI, enrollmentsAPI } from '@/lib/api';
 import { getCourseContent } from '@/lib/course-content';
+import { PrintButton } from '@/components/ui/PrintButton';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -122,13 +123,16 @@ export default function CourseDetailPage() {
       {/* Header */}
       <div className="relative z-10 border-b border-white/10 bg-zinc-950/80 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <Link
-            href="/courses"
-            className="group mb-8 inline-flex items-center gap-2 text-xs font-bold tracking-widest text-gray-500 uppercase transition-colors hover:text-red-500"
-          >
-            <span className="transform transition-transform group-hover:-translate-x-1">←</span>{' '}
-            Network Directory
-          </Link>
+          <div className="mb-8 flex items-center justify-between">
+            <Link
+              href="/courses"
+              className="group inline-flex items-center gap-2 text-xs font-bold tracking-widest text-gray-500 uppercase transition-colors hover:text-red-500"
+            >
+              <span className="transform transition-transform group-hover:-translate-x-1">←</span>{' '}
+              Network Directory
+            </Link>
+            <PrintButton label="Print Course" />
+          </div>
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <div>
               <div className="mb-4 inline-block rounded-full border border-red-500/20 bg-red-500/10 px-3 py-1 font-mono text-xs tracking-widest text-red-500 uppercase">
@@ -209,11 +213,11 @@ export default function CourseDetailPage() {
                 <span className="inline-block h-4 w-4 rounded-sm bg-emerald-500"></span> Curriculum
                 Map
               </h2>
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="course-module-grid grid gap-4 md:grid-cols-3">
                 {courseContent.modules.map((module, index) => (
                   <div
                     key={module.title}
-                    className="rounded-2xl border border-white/8 bg-white/4 p-5"
+                    className="course-module rounded-2xl border border-white/8 bg-white/4 p-5"
                   >
                     <p className="mb-3 text-xs font-bold tracking-[0.18em] text-red-400 uppercase">
                       Module {index + 1}
@@ -262,7 +266,7 @@ export default function CourseDetailPage() {
 
           {/* Action / Enrollment Card */}
           <div className="lg:col-span-1">
-            <div className="sticky top-28 rounded-2xl border border-white/10 bg-zinc-950 p-8 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+            <div className="sticky-enroll-card sticky top-28 rounded-2xl border border-white/10 bg-zinc-950 p-8 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
               <h3 className="mb-6 text-xl font-black tracking-widest text-white uppercase">
                 Connection Status
               </h3>

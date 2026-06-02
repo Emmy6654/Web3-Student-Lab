@@ -39,7 +39,7 @@ export default function CertificateTemplate({ data, forExport = false }: Props) 
   return (
     <div
       id="certificate-template"
-      className={`relative overflow-hidden bg-zinc-950 select-none ${
+      className={`certificate-template relative overflow-hidden bg-zinc-950 select-none ${
         forExport ? 'h-[848px] w-[1200px]' : 'aspect-[1200/848] w-full'
       }`}
       style={{ fontFamily: 'Georgia, serif' }}

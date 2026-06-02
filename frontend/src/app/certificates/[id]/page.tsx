@@ -1,6 +1,7 @@
 'use client';
 
 import { Certificate, certificatesAPI } from '@/lib/api';
+import { PrintButton } from '@/components/ui/PrintButton';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -78,7 +79,7 @@ export default function CertificateNFTPage() {
             <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-r from-red-600 to-red-900 opacity-30 blur transition duration-1000 group-hover:opacity-60 group-hover:duration-200"></div>
 
             {/* The Asset Itself */}
-            <div className="relative flex aspect-[3/4] transform flex-col justify-between rounded-[2rem] border border-white/20 bg-zinc-950 p-8 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+            <div className="certificate-container relative flex aspect-[3/4] transform flex-col justify-between rounded-[2rem] border border-white/20 bg-zinc-950 p-8 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
               <div className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay contrast-150"></div>
 
               <div className="relative z-10 flex items-start justify-between">
@@ -210,7 +211,7 @@ export default function CertificateNFTPage() {
             <button
               onClick={verifyOnChain}
               disabled={isVerifying}
-              className={`flex-1 rounded-xl py-4 font-black tracking-widest uppercase transition-all ${
+              className={`no-print flex-1 rounded-xl py-4 font-black tracking-widest uppercase transition-all ${
                 isVerifying
                   ? 'cursor-wait bg-zinc-800 text-gray-500'
                   : 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:bg-gray-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]'
@@ -220,7 +221,7 @@ export default function CertificateNFTPage() {
             </button>
             <Link
               href={`/certificates/generate?id=${certificate.id}`}
-              className="flex items-center gap-2 rounded-xl bg-red-600 px-6 py-4 text-sm font-black tracking-widest text-white uppercase transition-colors hover:bg-red-700"
+              className="no-print flex items-center gap-2 rounded-xl bg-red-600 px-6 py-4 text-sm font-black tracking-widest text-white uppercase transition-colors hover:bg-red-700"
             >
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -232,6 +233,7 @@ export default function CertificateNFTPage() {
               </svg>
               Download
             </Link>
+            <PrintButton label="Print" className="rounded-xl bg-zinc-800 px-4 py-4 text-sm font-black tracking-widest text-white uppercase transition-colors hover:bg-zinc-700" />
           </div>
 
           {verificationResult && (

@@ -2,6 +2,7 @@
 
 import quizMachine from '@/lib/quizMachine';
 import { quizQuestions } from '@/lib/quizQuestions';
+import { PrintButton } from '@/components/ui/PrintButton';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { useMachine } from '@xstate/react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -95,15 +96,18 @@ export default function QuizEngine() {
                 life lines for every question. Use hints, try 50/50, and keep your streak alive.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-center">
-              <div className="rounded-3xl bg-white/5 p-4">
-                <p className="text-sm tracking-[0.35em] text-gray-400 uppercase">Question</p>
-                <p className="mt-2 text-3xl font-black text-white">{question.id.slice(1)}</p>
+            <div className="flex items-end gap-4">
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div className="rounded-3xl bg-white/5 p-4">
+                  <p className="text-sm tracking-[0.35em] text-gray-400 uppercase">Question</p>
+                  <p className="mt-2 text-3xl font-black text-white">{question.id.slice(1)}</p>
+                </div>
+                <div className="rounded-3xl bg-white/5 p-4">
+                  <p className="text-sm tracking-[0.35em] text-gray-400 uppercase">Score</p>
+                  <p className="mt-2 text-3xl font-black text-red-500">{current.context.score}</p>
+                </div>
               </div>
-              <div className="rounded-3xl bg-white/5 p-4">
-                <p className="text-sm tracking-[0.35em] text-gray-400 uppercase">Score</p>
-                <p className="mt-2 text-3xl font-black text-red-500">{current.context.score}</p>
-              </div>
+              <PrintButton label="Print" className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-xs font-black tracking-widest text-white uppercase transition-colors hover:border-red-600 hover:bg-zinc-800" />
             </div>
           </div>
         </section>
@@ -146,7 +150,7 @@ export default function QuizEngine() {
               transition={{ duration: 0.35 }}
               className="grid gap-8 xl:grid-cols-[1.5fr_0.9fr]"
             >
-              <div className="rounded-[40px] border border-white/10 bg-[#0e0e0e]/90 p-8 shadow-[0_0_40px_rgba(0,0,0,0.28)]">
+              <div className="quiz-question rounded-[40px] border border-white/10 bg-[#0e0e0e]/90 p-8 shadow-[0_0_40px_rgba(0,0,0,0.28)]">
                 <div className="flex flex-col gap-4">
                   <div className="inline-flex items-center rounded-full bg-white/5 px-4 py-2 text-xs tracking-[0.35em] text-gray-400 uppercase">
                     {getDisplayLabel(question)}
@@ -157,7 +161,7 @@ export default function QuizEngine() {
 
                 <div className="mt-8 space-y-6">
                   {question.type === 'multiple-choice' && (
-                    <div className="grid gap-4">
+                    <div className="quiz-option grid gap-4">
                       {current.context.visibleChoices.map((choice) => {
                         const active = choice === current.context.selectedOption;
                         return (
@@ -332,7 +336,7 @@ export default function QuizEngine() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -24 }}
               transition={{ duration: 0.35 }}
-              className="rounded-[40px] border border-white/10 bg-[#111111]/90 p-10 shadow-[0_0_40px_rgba(0,0,0,0.28)]"
+              className="quiz-question rounded-[40px] border border-white/10 bg-[#111111]/90 p-10 shadow-[0_0_40px_rgba(0,0,0,0.28)]"
             >
               <div className="grid gap-8 xl:grid-cols-[1.6fr_0.8fr]">
                 <div className="space-y-6">
@@ -389,7 +393,7 @@ export default function QuizEngine() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.35 }}
-              className="rounded-[40px] border border-white/10 bg-[#111111]/90 p-10 shadow-[0_0_40px_rgba(0,0,0,0.28)]"
+              className="quiz-question rounded-[40px] border border-white/10 bg-[#111111]/90 p-10 shadow-[0_0_40px_rgba(0,0,0,0.28)]"
             >
               <div className="space-y-8 text-center">
                 <p className="text-sm tracking-[0.35em] text-red-500 uppercase">Quiz Complete</p>

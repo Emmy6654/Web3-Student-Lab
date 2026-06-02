@@ -1,0 +1,417 @@
+@page {
+  margin: 1.5cm 2cm;
+  size: A4 portrait;
+}
+
+@page :first {
+  margin-top: 2cm;
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    background: #fff !important;
+    color: #000 !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print,
+  nav,
+  header:not(.print-header),
+  footer,
+  iframe,
+  video,
+  audio,
+  .skip-link,
+  .skip-link-group,
+  .Toastify,
+  [role='dialog'],
+  [role='alertdialog'],
+  .fixed,
+  .sticky:not(.print-sticky) {
+    display: none !important;
+  }
+
+  button:not(.print-button),
+  .btn:not(.print-button),
+  [class*='button']:not(.print-button) {
+    display: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #555 !important;
+    word-break: break-all;
+  }
+
+  a[href^='/']::after {
+    content: ' (https://web3studentlab.com' attr(href) ')';
+    font-size: 0.8em;
+    color: #555 !important;
+  }
+
+  a[href^='#']::after,
+  a.no-link-url::after,
+  a[href^='javascript']::after {
+    content: none !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    font-family: var(--font-sans), 'Helvetica Neue', Arial, sans-serif;
+    color: #000 !important;
+    line-height: 1.3;
+  }
+
+  h1 {
+    font-size: 24pt;
+    margin-top: 0;
+    margin-bottom: 12pt;
+    border-bottom: 2px solid #000;
+    padding-bottom: 6pt;
+  }
+
+  h2 {
+    font-size: 18pt;
+    margin-top: 18pt;
+    margin-bottom: 8pt;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4pt;
+  }
+
+  h3 {
+    font-size: 14pt;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+  }
+
+  p,
+  li,
+  blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  pre,
+  code {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 9pt;
+    border: 1px solid #ccc;
+    padding: 2pt 4pt;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  pre {
+    border: 1px solid #999;
+    padding: 8pt;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12pt 0;
+    page-break-inside: avoid;
+  }
+
+  th,
+  td {
+    border: 1px solid #999;
+    padding: 6pt 8pt;
+    text-align: left;
+    font-size: 10pt;
+  }
+
+  th {
+    background: #eee !important;
+    font-weight: bold;
+  }
+
+  blockquote {
+    border-left: 3px solid #ccc;
+    margin-left: 0;
+    padding-left: 12pt;
+    font-style: italic;
+    color: #333 !important;
+  }
+
+  .print-only {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    overflow: visible !important;
+    width: auto !important;
+    height: auto !important;
+    clip: auto !important;
+  }
+
+  .print-only-inline {
+    display: inline !important;
+    visibility: visible !important;
+  }
+
+  .print-break-before {
+    page-break-before: always !important;
+  }
+
+  .print-break-after {
+    page-break-after: always !important;
+  }
+
+  .print-break-inside-avoid {
+    page-break-inside: avoid !important;
+  }
+
+  .print-break-inside-avoid > * {
+    page-break-inside: avoid;
+  }
+
+  .print-center {
+    text-align: center !important;
+  }
+
+  .print-text-sm {
+    font-size: 9pt !important;
+  }
+
+  .print-mt-0 {
+    margin-top: 0 !important;
+  }
+
+  .print-mb-0 {
+    margin-bottom: 0 !important;
+  }
+
+  .print-border-top {
+    border-top: 1px solid #000 !important;
+    padding-top: 8pt !important;
+  }
+
+  .print-border-bottom {
+    border-bottom: 1px solid #000 !important;
+    padding-bottom: 8pt !important;
+  }
+
+  #main-content {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .glass-panel,
+  .surface-card {
+    border: 1px solid #ccc !important;
+    border-radius: 4pt !important;
+    background: #fff !important;
+    backdrop-filter: none !important;
+    padding: 10pt !important;
+    margin-bottom: 10pt !important;
+    page-break-inside: avoid;
+  }
+
+  .eyebrow {
+    font-size: 8pt !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #666 !important;
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    margin-bottom: 4pt !important;
+  }
+
+  .eyebrow::before {
+    display: none !important;
+  }
+
+  [class*='bg-'] {
+    background: transparent !important;
+  }
+
+  [class*='text-'] {
+    color: #000 !important;
+  }
+
+  .min-h-screen {
+    min-height: auto !important;
+  }
+
+  .overflow-hidden {
+    overflow: visible !important;
+  }
+
+  .pointer-events-none {
+    display: none !important;
+  }
+
+  .backdrop-blur-xl,
+  .backdrop-blur,
+  [class*='backdrop-blur'] {
+    backdrop-filter: none !important;
+  }
+
+  .z-50,
+  .z-40,
+  .z-30,
+  .z-20,
+  .z-10 {
+    z-index: auto !important;
+  }
+
+  .lg\\:flex,
+  .lg\\:hidden {
+    display: none !important;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .print\\:block {
+    display: block !important;
+  }
+
+  .print\\:inline {
+    display: inline !important;
+  }
+
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 12pt 0;
+  }
+
+  abbr[title]::after {
+    content: ' (' attr(title) ')';
+  }
+
+  .certificate-container {
+    page-break-inside: avoid;
+    page-break-after: always;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .certificate-container .certificate-template {
+    border: 2px solid #000 !important;
+    border-radius: 8pt !important;
+    padding: 20pt !important;
+  }
+
+  .course-module {
+    page-break-inside: avoid;
+    margin-bottom: 8pt;
+    border: 1px solid #ddd !important;
+    border-radius: 4pt;
+    padding: 8pt;
+  }
+
+  .course-module-grid {
+    display: block !important;
+  }
+
+  .course-module-grid > * {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 8pt;
+  }
+
+  .sticky-enroll-card {
+    display: none !important;
+  }
+
+  .quiz-question {
+    page-break-inside: avoid;
+    margin-bottom: 12pt;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8pt;
+  }
+
+  .quiz-option {
+    margin: 4pt 0;
+    padding: 4pt 0;
+  }
+
+  nav,
+  [role='navigation'] {
+    display: none !important;
+  }
+
+  .print-header-info {
+    display: block !important;
+    text-align: center;
+    font-size: 8pt;
+    color: #999 !important;
+    margin-bottom: 12pt;
+    padding-bottom: 6pt;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .print-footer-info {
+    display: block !important;
+    text-align: center;
+    font-size: 7pt;
+    color: #999 !important;
+    margin-top: 18pt;
+    padding-top: 6pt;
+    border-top: 1px solid #ccc;
+  }
+}
+
+@media print and (orientation: landscape) {
+  @page {
+    size: A4 landscape;
+  }
+}

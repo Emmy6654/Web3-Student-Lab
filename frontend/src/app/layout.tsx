@@ -3,6 +3,7 @@ import { ThemeProvider } from '@/contexts/ThemeContext';
 import { WalletProvider } from '@/contexts/WalletContext';
 import type { Metadata } from 'next';
 import './globals.css';
+import './print.css';
 
 export const metadata: Metadata = {
   title: 'Web3 Student Lab',

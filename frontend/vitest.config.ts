@@ -26,6 +26,7 @@ export default defineConfig({
         'src/hooks/useRovingTabindex.ts',
         'src/components/ui/SkipLink.tsx',
         'src/components/ui/FocusTrap.tsx',
+        'src/components/ui/PrintButton.tsx',
       ],
     },
   },

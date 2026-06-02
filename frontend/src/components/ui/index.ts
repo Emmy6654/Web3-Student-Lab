@@ -9,6 +9,7 @@ export { ErrorFallback } from './ErrorFallback';
 export { FocusTrap } from './FocusTrap';
 export { Input } from './Input';
 export { Label } from './Label';
+export { PrintButton, useBeforePrint } from './PrintButton';
 export { Progress } from './Progress';
 export { ScrollArea } from './ScrollArea';
 export { Skeleton } from './Skeleton';
